@@ -3,6 +3,7 @@ import styles from "@/styles/Personal.module.css";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Tabla from "@/Componentes/Tabla";
+import { variables } from "@/Storage/ip";
 
 export default function Home() {
   const [Cambio, setCambio] = useState(false);
@@ -11,7 +12,7 @@ export default function Home() {
 
   useEffect(() => {
     async function fetchData() {
-      const rest = await fetch("http://localhost:3000/api/consultar_car");
+      const rest = await fetch("http://"+ variables[0].ip+"/api/consultar_car");
       const data = await rest.json();
       Valor.current = data.data;
     }
